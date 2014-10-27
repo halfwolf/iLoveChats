@@ -11,14 +11,21 @@ var sendMessageToChat = function(msg) {
   newChat.sendMessage(msg);
 }
 
-var sendNameChange = function(msg) {
+var makeNameChange = function(msg) {
   var name = msg.slice(6);
   newChat.sendNameChange(name);
 }
 
+var makeRoomChange = function(msg) {
+  var room = msg.slice(6);
+  newChat.sendRoomChange(room);
+}
+
 var evaluateParse = function(msg) {
   if (msg.slice(0, 5) === "/nick") {
-    sendNameChange(msg);
+    makeNameChange(msg);
+  } else if (msg.slice(0, 5) === "/room"){
+    makeRoomChange(msg)
   } else {
     insertIntoHTML("invalid command");
   }
@@ -37,6 +44,10 @@ $(document).ready(function() {
 
   socket.on("nicknameChangeResult", function(mesg) {
     insertIntoHTML(mesg.message)
+  });
+
+  socket.on("roomChangeResult", function(mesg) {
+    insertIntoHTML(mesg.message);
   });
 
   $('form.message-form').bind("submit", function(event){

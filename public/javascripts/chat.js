@@ -9,3 +9,7 @@ Chat.prototype.sendMessage = function(message) {
 Chat.prototype.sendNameChange = function(name) {
   this.socket.emit('nicknameChangeRequest', name)
 }
+
+Chat.prototype.sendRoomChange = function(room) {
+  this.socket.emit('roomChangeRequest', room)
+}
