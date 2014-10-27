@@ -21,6 +21,15 @@ var makeRoomChange = function(msg) {
   newChat.sendRoomChange(room);
 }
 
+var updateRoster = function(room, roster) {
+  $('h2.roster-room-title').text(room);
+  var rosterHTML = "";
+  roster.forEach(function(el) {
+    rosterHTML += ("<li>" + el + "</li>")
+  });
+  $('ul.roster-items').html(rosterHTML);
+}
+
 var evaluateParse = function(msg) {
   if (msg.slice(0, 5) === "/nick") {
     makeNameChange(msg);
@@ -48,6 +57,10 @@ $(document).ready(function() {
 
   socket.on("roomChangeResult", function(mesg) {
     insertIntoHTML(mesg.message);
+  });
+
+  socket.on("rosterChange", function(response) {
+    updateRoster(response.room, response.roster);
   });
 
   $('form.message-form').bind("submit", function(event){

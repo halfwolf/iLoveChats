@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+
+
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
   </script>
@@ -10,7 +12,9 @@
 
 </head>
 <body>
-  <div class="messages">
+  <div class="message-container">
+    <div class="messages">
+    </div>
   </div>
   <form class="message-form">
     <label for="chat-text">
@@ -22,5 +26,11 @@
     </input>
     <button>submit</button>
   </form>
+
+  <div class="roster">
+    <h2 class="roster-room-title"></h2>
+    <ul class="roster-items">
+    </ul>
+  </div>
 </body>
 </html>
