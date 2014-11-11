@@ -4,10 +4,10 @@ A minimalist chatroom app built with Node.
 ### Commands
 * Change room
 ```
-/room _roomname_
+/room room_name
 ```
 
 * Change nickname
 ```
-/nick _newNickname_
+/nick new_nickname
 ```
